@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="%app.menu.file">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.new" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.open" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.save" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.save_as" />
+                </items>
+                <SeparatorMenuItem />
+                <SeparatorMenuItem />
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.settings" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.file.quit" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%app.menu.edit">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.undo" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.redo" />
+                </items>
+                <SeparatorMenuItem />
+                <SeparatorMenuItem />
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.cut" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.copy" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.paste" />
+                </items>
+                <items>
+                    <MenuItem mnemonicParsing="false" text="%app.menu.edit.delete" />
+                </items>
+            </Menu>
+        </menus>
+        </MenuBar>
+        <TextArea fx:id="textArea" layoutY="26.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font></TextArea>
+      <AnchorPane prefHeight="26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0" />
+            <Label text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
+            <Label text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
