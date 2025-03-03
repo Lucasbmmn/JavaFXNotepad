@@ -4,6 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 public class MainController {
     @FXML
     private TextArea textArea;
@@ -56,17 +62,19 @@ public class MainController {
 
     @FXML
     private void actionCut() {
-
+        actionCopy();
+        this.textArea.deleteText(this.textArea.getSelection());
     }
 
     @FXML
     private void actionCopy() {
-
+        StringSelection selection = new StringSelection(this.textArea.getSelectedText());
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
     }
 
     @FXML
-    private void actionPaste() {
-
+    private void actionPaste() throws IOException, UnsupportedFlavorException {
+        this.textArea.replaceSelection((String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor));
     }
 
     @FXML
