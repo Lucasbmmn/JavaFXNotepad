@@ -23,7 +23,6 @@
                     <MenuItem onAction="#actionSaveAs" mnemonicParsing="false" text="%app.menu.file.save_as" />
                 </items>
                 <SeparatorMenuItem />
-                <SeparatorMenuItem />
                 <items>
                     <MenuItem onAction="#actionSettings" mnemonicParsing="false" text="%app.menu.file.settings" />
                 </items>
@@ -39,7 +38,6 @@
                     <MenuItem onAction="#actionRedo" mnemonicParsing="false" text="%app.menu.edit.redo" />
                 </items>
                 <SeparatorMenuItem />
-                <SeparatorMenuItem />
                 <items>
                     <MenuItem onAction="#actionCut" mnemonicParsing="false" text="%app.menu.edit.cut" />
                 </items>
@@ -49,6 +47,7 @@
                 <items>
                     <MenuItem onAction="#actionPaste" mnemonicParsing="false" text="%app.menu.edit.paste" />
                 </items>
+                <SeparatorMenuItem />
                 <items>
                     <MenuItem onAction="#actionDelete" mnemonicParsing="false" text="%app.menu.edit.delete" />
                 </items>
