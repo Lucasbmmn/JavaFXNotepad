@@ -7,14 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Main application class for the Notepad application.
+ */
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        // Internationalization
+        // Initialize internationalization
         Internationalization i18n = new Internationalization();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
-        fxmlLoader.setResources(i18n.getBundle()); // Internationalization in fxml
+        fxmlLoader.setResources(i18n.getBundle()); // Set internationalization in fxml
         Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
         MainController controller = fxmlLoader.getController();
         controller.setStage(stage);
@@ -27,6 +30,11 @@ public class Application extends javafx.application.Application {
         stage.show();
     }
 
+    /**
+     * Launches the application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch();
     }

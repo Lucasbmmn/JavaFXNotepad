@@ -17,6 +17,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * Main controller class for the Notepad application.
+ * Handles user interactions and file operations.
+ */
 public class MainController {
     @FXML
     private TextArea textArea;
@@ -32,6 +36,9 @@ public class MainController {
     private String filePath = "";
     private boolean isFileSaved = false;
 
+    /**
+     * Creates a new file. Prompts the user to save the current file if it has unsaved changes.
+     */
     @FXML
     private void actionNew() {
         if (this.isFileSaved || this.textArea.getText().isEmpty() || this.askSave()) {
@@ -42,6 +49,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Opens an existing file. Prompts the user to save the current file if it has unsaved changes.
+     */
     @FXML
     private void actionOpen() {
         if (this.isFileSaved || this.textArea.getText().isEmpty() || this.askSave()) {
@@ -62,6 +72,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Saves the current file. If the file has not been saved before, it calls actionSaveAs().
+     */
     @FXML
     private void actionSave() {
         if (!this.filePath.isEmpty()) FileHandler.saveFile(this.filePath, this.textArea.getText());
@@ -69,6 +82,9 @@ public class MainController {
         this.isFileSaved = true;
     }
 
+    /**
+     * Saves the current file as a new file. Prompts the user to choose a file name and location.
+     */
     @FXML
     private void actionSaveAs() {
         FileChooser fileChooser = new FileChooser();
@@ -109,28 +125,48 @@ public class MainController {
 
     }
 
+    /**
+     * Cuts the selected text and copies it to the clipboard.
+     */
     @FXML
     private void actionCut() {
         actionCopy();
         actionDelete();
     }
 
+    /**
+     * Copies the selected text to the clipboard.
+     */
     @FXML
     private void actionCopy() {
         StringSelection selection = new StringSelection(this.textArea.getSelectedText());
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
     }
 
+    /**
+     * Pastes the text from the clipboard into the text area.
+     *
+     * @throws IOException if clipboard data cannot be retrieved
+     * @throws UnsupportedFlavorException if clipboard data is not in string format
+     */
     @FXML
     private void actionPaste() throws IOException, UnsupportedFlavorException {
         this.textArea.replaceSelection((String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor));
     }
 
+    /**
+     * Deletes the selected text from the text area.
+     */
     @FXML
     private void actionDelete() {
         this.textArea.deleteText(this.textArea.getSelection());
     }
 
+    /**
+     * Prompts the user to save the current file if it has unsaved changes.
+     *
+     * @return true if the user chooses to save or discard the changes, false if the user cancels
+     */
     private boolean askSave() {
         boolean result = true;
 
@@ -152,10 +188,20 @@ public class MainController {
         return result;
     }
 
+    /**
+     * Sets the stage for the application.
+     *
+     * @param stage the stage to set
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Sets the internationalization resource bundle.
+     *
+     * @param i18nBundle the resource bundle to set
+     */
     public void setI18nBundle(ResourceBundle i18nBundle) {
         this.i18nBundle = i18nBundle;
     }
