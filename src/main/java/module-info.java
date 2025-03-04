@@ -6,4 +6,6 @@ module fr.lucasbmmn.notepad {
 
     opens fr.lucasbmmn.notepad to javafx.fxml;
     exports fr.lucasbmmn.notepad;
+    exports fr.lucasbmmn.notepad.utils;
+    opens fr.lucasbmmn.notepad.utils to javafx.fxml;
 }
