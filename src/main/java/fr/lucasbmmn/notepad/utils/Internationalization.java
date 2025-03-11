@@ -7,15 +7,14 @@ import java.util.ResourceBundle;
  * Utility class for handling internationalization.
  */
 public class Internationalization {
-    private Locale locale;
-    private ResourceBundle bundle;
+    private final ResourceBundle bundle; // Resource bundle for internationalization
 
     /**
      * Initializes the internationalization settings with the default locale.
      */
     public Internationalization() {
-        locale = Locale.getDefault();
-        bundle = ResourceBundle.getBundle("fr/lucasbmmn/notepad/languages/language", this.locale);
+        Locale locale = Locale.getDefault(); // Default locale for the application
+        bundle = ResourceBundle.getBundle("fr/lucasbmmn/notepad/languages/language", locale);
     }
 
     /**

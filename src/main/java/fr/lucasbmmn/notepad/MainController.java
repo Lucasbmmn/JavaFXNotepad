@@ -9,12 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.File;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 /**
@@ -23,18 +18,18 @@ import java.util.ResourceBundle;
  */
 public class MainController {
     @FXML
-    private TextArea textArea;
+    private TextArea textArea; // The main text area where users input and edit text
     @FXML
-    private Label posLabel;
+    private Label posLabel; // Label to display the cursor position
     @FXML
-    private Label characterLabel;
+    private Label characterLabel; // Label to display character count
     @FXML
-    private Label encodingLabel;
-    private Stage stage;
-    private ResourceBundle i18nBundle;
-    private String fileName = "";
-    private String filePath = "";
-    private boolean isFileSaved = false;
+    private Label encodingLabel; // Label to display the file encoding
+    private Stage stage; // The main application window
+    private ResourceBundle i18nBundle; // Resource bundle for internationalization
+    private String fileName = ""; // The name of the currently open file
+    private String filePath = ""; // The path of the currently open file
+    private boolean isFileSaved = false; // Flag to check if the file is saved
 
     /**
      * Creates a new file. Prompts the user to save the current file if it has unsaved changes.
@@ -115,23 +110,29 @@ public class MainController {
 
     }
 
+    /**
+     * Undoes the last text action (addition or deletion) performed in the text area.
+     */
     @FXML
     private void actionUndo() {
-
+        this.textArea.undo();
     }
 
+    /**
+     * Redoes the last undone text action (addition or deletion) in the text area.
+     */
     @FXML
     private void actionRedo() {
-
+        this.textArea.redo();
     }
+
 
     /**
      * Cuts the selected text and copies it to the clipboard.
      */
     @FXML
     private void actionCut() {
-        actionCopy();
-        actionDelete();
+        this.textArea.cut();
     }
 
     /**
@@ -139,19 +140,15 @@ public class MainController {
      */
     @FXML
     private void actionCopy() {
-        StringSelection selection = new StringSelection(this.textArea.getSelectedText());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+        this.textArea.copy();
     }
 
     /**
      * Pastes the text from the clipboard into the text area.
-     *
-     * @throws IOException if clipboard data cannot be retrieved
-     * @throws UnsupportedFlavorException if clipboard data is not in string format
      */
     @FXML
-    private void actionPaste() throws IOException, UnsupportedFlavorException {
-        this.textArea.replaceSelection((String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor));
+    private void actionPaste() {
+        this.textArea.paste();
     }
 
     /**
@@ -159,7 +156,7 @@ public class MainController {
      */
     @FXML
     private void actionDelete() {
-        this.textArea.deleteText(this.textArea.getSelection());
+        this.textArea.deleteNextChar();
     }
 
     /**

@@ -27,10 +27,8 @@ public class FileHandler {
      * @param content the content to write to the file
      */
     public static void saveFile(File file, String content) {
-        try {
-            FileWriter fileWriter = new FileWriter(file);
+        try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(content);
-            fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -53,17 +51,14 @@ public class FileHandler {
      * @return the content of the file
      */
     public static String openFile(File file) {
-        try {
-            StringBuilder result = new StringBuilder();
-            Scanner scanner = new Scanner(file);
+        StringBuilder result = new StringBuilder();
+        try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
-                result.append(scanner.nextLine());
-                result.append('\n');
+                result.append(scanner.nextLine()).append('\n');
             }
-            scanner.close();
-            return result.substring(0, result.length());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return result.toString();
     }
 }
