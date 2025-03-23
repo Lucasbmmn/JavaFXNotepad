@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 /**
@@ -23,13 +24,26 @@ public class MainController {
     private Label posLabel; // Label to display the cursor position
     @FXML
     private Label characterLabel; // Label to display character count
-    @FXML
-    private Label encodingLabel; // Label to display the file encoding
     private Stage stage; // The main application window
     private ResourceBundle i18nBundle; // Resource bundle for internationalization
+    private NumberFormat numberFormat; // Number format for displaying numeric values
     private String fileName = ""; // The name of the currently open file
     private String filePath = ""; // The path of the currently open file
     private boolean isFileSaved = false; // Flag to check if the file is saved
+
+    /**
+     * Initializes the controller. Sets up listeners for text changes and caret position changes
+     * to update the status bar with the current line, column, and character count.
+     */
+    @FXML
+    private void initialize() {
+        this.textArea.textProperty().addListener(
+                (_, _, _) -> updateStateBarLength()
+        );
+        this.textArea.caretPositionProperty().addListener(
+                (_, _, _) -> updateStateBarPosition()
+        );
+    }
 
     /**
      * Creates a new file. Prompts the user to save the current file if it has unsaved changes.
@@ -126,7 +140,6 @@ public class MainController {
         this.textArea.redo();
     }
 
-
     /**
      * Cuts the selected text and copies it to the clipboard.
      */
@@ -186,6 +199,36 @@ public class MainController {
     }
 
     /**
+     * Updates the status bar with the current cursor position (line and column).
+     */
+    private void updateStateBarPosition() {
+        int line = 1;
+        int column = 1;
+        boolean isLineEnded = false;
+        for (int i = this.textArea.getCaretPosition(); i > 0; i--) {
+            if (this.textArea.getText(i-1, i).equals("\n")) {
+                line++;
+                isLineEnded = true;
+            } else if (!isLineEnded) column++;
+        }
+        this.posLabel.setText(i18nBundle.getString("app.stateBar.position")
+                .formatted(this.numberFormat.format(line), this.numberFormat.format(column)));
+    }
+
+    /**
+     * Updates the status bar with the current character count.
+     */
+    private void updateStateBarLength() {
+        if (this.textArea.getLength() <= 1) {
+            this.characterLabel.setText(i18nBundle.getString("app.stateBar.character")
+                    .formatted(this.numberFormat.format(this.textArea.getLength())));
+        } else {
+            this.characterLabel.setText(i18nBundle.getString("app.stateBar.characters")
+                    .formatted(this.numberFormat.format(this.textArea.getLength())));
+        }
+    }
+
+    /**
      * Sets the stage for the application.
      *
      * @param stage the stage to set
@@ -201,5 +244,14 @@ public class MainController {
      */
     public void setI18nBundle(ResourceBundle i18nBundle) {
         this.i18nBundle = i18nBundle;
+    }
+
+    /**
+     * Sets the number format for displaying numeric values.
+     *
+     * @param numberFormat the number format to set
+     */
+    public void setNumberFormat(NumberFormat numberFormat) {
+        this.numberFormat = numberFormat;
     }
 }

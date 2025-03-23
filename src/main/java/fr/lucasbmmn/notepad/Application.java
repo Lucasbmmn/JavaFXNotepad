@@ -22,6 +22,7 @@ public class Application extends javafx.application.Application {
         MainController controller = fxmlLoader.getController();
         controller.setStage(stage);
         controller.setI18nBundle(i18n.getBundle());
+        controller.setNumberFormat(i18n.getNumberFormat());
 
         stage.setTitle(i18n.getBundle().getString("app.title") + " - " + i18n.getBundle().getString("app.file.untitled"));
         stage.setMinWidth(250);

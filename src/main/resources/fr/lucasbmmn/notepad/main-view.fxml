@@ -5,68 +5,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.lucasbmmn.notepad.MainController">
-    <children>
-        <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-            <Menu mnemonicParsing="false" text="%app.menu.file">
-                <items>
-                    <MenuItem onAction="#actionNew" mnemonicParsing="false" text="%app.menu.file.new" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionOpen" mnemonicParsing="false" text="%app.menu.file.open" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionSave" mnemonicParsing="false" text="%app.menu.file.save" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionSaveAs" mnemonicParsing="false" text="%app.menu.file.save_as" />
-                </items>
-                <SeparatorMenuItem />
-                <items>
-                    <MenuItem onAction="#actionSettings" mnemonicParsing="false" text="%app.menu.file.settings" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionQuit" mnemonicParsing="false" text="%app.menu.file.quit" />
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="%app.menu.edit">
-                <items>
-                    <MenuItem onAction="#actionUndo" mnemonicParsing="false" text="%app.menu.edit.undo" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionRedo" mnemonicParsing="false" text="%app.menu.edit.redo" />
-                </items>
-                <SeparatorMenuItem />
-                <items>
-                    <MenuItem onAction="#actionCut" mnemonicParsing="false" text="%app.menu.edit.cut" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionCopy" mnemonicParsing="false" text="%app.menu.edit.copy" />
-                </items>
-                <items>
-                    <MenuItem onAction="#actionPaste" mnemonicParsing="false" text="%app.menu.edit.paste" />
-                </items>
-                <SeparatorMenuItem />
-                <items>
-                    <MenuItem onAction="#actionDelete" mnemonicParsing="false" text="%app.menu.edit.delete" />
-                </items>
-            </Menu>
-        </menus>
-        </MenuBar>
-        <TextArea fx:id="textArea" layoutY="26.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <font>
-            <Font name="Consolas" size="15.0" />
-         </font></TextArea>
-      <AnchorPane prefHeight="26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label fx:id="posLabel" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0" />
-            <Label fx:id="characterLabel" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
-            <Label fx:id="encodingLabel" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
-         </children>
-      </AnchorPane>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="fr.lucasbmmn.notepad.MainController">
+    <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Menu mnemonicParsing="false" text="%app.menu.file">
+            <MenuItem onAction="#actionNew" mnemonicParsing="false" text="%app.menu.file.new"/>
+            <MenuItem onAction="#actionOpen" mnemonicParsing="false" text="%app.menu.file.open"/>
+            <MenuItem onAction="#actionSave" mnemonicParsing="false" text="%app.menu.file.save"/>
+            <MenuItem onAction="#actionSaveAs" mnemonicParsing="false" text="%app.menu.file.save_as"/>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#actionSettings" mnemonicParsing="false" text="%app.menu.file.settings"/>
+            <MenuItem onAction="#actionQuit" mnemonicParsing="false" text="%app.menu.file.quit"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%app.menu.edit">
+            <MenuItem onAction="#actionUndo" mnemonicParsing="false" text="%app.menu.edit.undo"/>
+            <MenuItem onAction="#actionRedo" mnemonicParsing="false" text="%app.menu.edit.redo"/>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#actionCut" mnemonicParsing="false" text="%app.menu.edit.cut"/>
+            <MenuItem onAction="#actionCopy" mnemonicParsing="false" text="%app.menu.edit.copy"/>
+            <MenuItem onAction="#actionPaste" mnemonicParsing="false" text="%app.menu.edit.paste"/>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#actionDelete" mnemonicParsing="false" text="%app.menu.edit.delete"/>
+        </Menu>
+    </MenuBar>
+    <TextArea fx:id="textArea" layoutY="26.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+        <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+        <font>
+        <Font name="Consolas" size="15.0"/>
+        </font>
+    </TextArea>
+    <AnchorPane prefHeight="26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0">
+        <Label fx:id="posLabel" text="%app.stateBar.position_default" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"/>
+        <Label fx:id="characterLabel" text="%app.stateBar.character_default" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0"/>
+    </AnchorPane>
 </AnchorPane>

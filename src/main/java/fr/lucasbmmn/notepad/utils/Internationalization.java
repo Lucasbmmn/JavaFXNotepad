@@ -1,5 +1,6 @@
 package fr.lucasbmmn.notepad.utils;
 
+import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -7,6 +8,7 @@ import java.util.ResourceBundle;
  * Utility class for handling internationalization.
  */
 public class Internationalization {
+    private final NumberFormat numberFormat; // Number format for displaying numeric values
     private final ResourceBundle bundle; // Resource bundle for internationalization
 
     /**
@@ -14,6 +16,7 @@ public class Internationalization {
      */
     public Internationalization() {
         Locale locale = Locale.getDefault(); // Default locale for the application
+        numberFormat = NumberFormat.getInstance(locale);
         bundle = ResourceBundle.getBundle("fr/lucasbmmn/notepad/languages/language", locale);
     }
 
@@ -24,5 +27,14 @@ public class Internationalization {
      */
     public ResourceBundle getBundle() {
         return bundle;
+    }
+
+    /**
+     * Returns the number format for the current locale.
+     *
+     * @return the number format
+     */
+    public NumberFormat getNumberFormat() {
+        return numberFormat;
     }
 }
