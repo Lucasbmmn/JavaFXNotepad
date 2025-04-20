@@ -1,0 +1,16 @@
+AnchorPane {
+    -fx-background-color: #272727;
+    -fx-dark-text-color: #ffffff;
+    -fx-mid-text-color: #ffffff;
+    -fx-light-text-color: #ffffff;
+}
+
+TextArea, TextArea .content {
+    -fx-background-color: #272727;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+}
+
+MenuBar, #StateBar {
+    -fx-background-color: #2c2c2c;
+}
